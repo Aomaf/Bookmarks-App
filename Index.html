@@ -29,12 +29,10 @@
 
         <!--viewer-->
         <div class="viewer">
-            <a target="_blank" class="favoSite" v-for="(site,index) in sitesList" v-bind:href="site.url">
+            <a target="_blank" class="favoSite" v-for="(site,index) in sitesList" v-bind:href="site.siteUrl">
                 <button v-on:click="removeSite(index)" class="delete">🗑</button>
-
                 <span>{{site.siteLogo}}</span>
                 <h2>{{site.siteName}}</h2>
-
             </a>
         </div>
     </div>
