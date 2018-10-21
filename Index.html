@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Bookmarks App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="BMApp">
+        <!--header-->
+        <h1>Save Your Favorite Websites <span style="color: #f00">❤</span></h1>
+        <!--input form-->
+        <form>
+            <p class="error" v-show="error">
+                🚫Empty
+            </p>
+            <div>
+                <label for="site">Website</label>
+                <input v-model="newSiteName" type="text" id="site" placeholder="google">
+            </div>
+            <div>
+                <label for="url">Url</label>
+                <input v-model="newSiteUrl" v-on:keypress.enter="addFavoSite" type="text" id="url" placeholder="https://google.com">
+            </div>
+            <button v-on:click="addFavoSite" type="button">+Add</button>
+        </form>
+
+        <!--viewer-->
+        <div class="viewer">
+            <a target="_blank" class="favoSite" v-for="(site,index) in sitesList" v-bind:href="site.url">
+                <button v-on:click="removeSite(index)" class="delete">🗑</button>
+
+                <span>{{site.siteLogo}}</span>
+                <h2>{{site.siteName}}</h2>
+
+            </a>
+        </div>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="App.js"></script>
+</body>
+
+</html>
